@@ -1,0 +1,11 @@
+C:\Users\estagiario1\Documents\Movtech\Projeto 1\Movtech-Biblioteca-ConsultaEmprestimo\ConsultaEmprestimo\bin\Debug\ConsultaEmprestimo.exe.config
+C:\Users\estagiario1\Documents\Movtech\Projeto 1\Movtech-Biblioteca-ConsultaEmprestimo\ConsultaEmprestimo\bin\Debug\ConsultaEmprestimo.exe
+C:\Users\estagiario1\Documents\Movtech\Projeto 1\Movtech-Biblioteca-ConsultaEmprestimo\ConsultaEmprestimo\bin\Debug\ConsultaEmprestimo.pdb
+C:\Users\estagiario1\Documents\Movtech\Projeto 1\Movtech-Biblioteca-ConsultaEmprestimo\ConsultaEmprestimo\obj\Debug\ConsultaEmprestimo.csproj.AssemblyReference.cache
+C:\Users\estagiario1\Documents\Movtech\Projeto 1\Movtech-Biblioteca-ConsultaEmprestimo\ConsultaEmprestimo\obj\Debug\ConsultaEmprestimo.csproj.SuggestedBindingRedirects.cache
+C:\Users\estagiario1\Documents\Movtech\Projeto 1\Movtech-Biblioteca-ConsultaEmprestimo\ConsultaEmprestimo\obj\Debug\ConsultaEmprestimo.FormConsultaEmprestimo.resources
+C:\Users\estagiario1\Documents\Movtech\Projeto 1\Movtech-Biblioteca-ConsultaEmprestimo\ConsultaEmprestimo\obj\Debug\ConsultaEmprestimo.Properties.Resources.resources
+C:\Users\estagiario1\Documents\Movtech\Projeto 1\Movtech-Biblioteca-ConsultaEmprestimo\ConsultaEmprestimo\obj\Debug\ConsultaEmprestimo.csproj.GenerateResource.cache
+C:\Users\estagiario1\Documents\Movtech\Projeto 1\Movtech-Biblioteca-ConsultaEmprestimo\ConsultaEmprestimo\obj\Debug\ConsultaEmprestimo.csproj.CoreCompileInputs.cache
+C:\Users\estagiario1\Documents\Movtech\Projeto 1\Movtech-Biblioteca-ConsultaEmprestimo\ConsultaEmprestimo\obj\Debug\ConsultaEmprestimo.exe
+C:\Users\estagiario1\Documents\Movtech\Projeto 1\Movtech-Biblioteca-ConsultaEmprestimo\ConsultaEmprestimo\obj\Debug\ConsultaEmprestimo.pdb
