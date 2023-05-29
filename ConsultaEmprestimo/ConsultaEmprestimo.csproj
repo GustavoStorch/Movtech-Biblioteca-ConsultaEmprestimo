@@ -46,6 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuscarItemDAO.cs" />
+    <Compile Include="ConsultaEmprestimoDAO.cs" />
+    <Compile Include="ConsultaEmprestimoModel.cs" />
+    <Compile Include="DaoConnection.cs" />
+    <Compile Include="FormBuscarItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBuscarItem.Designer.cs">
+      <DependentUpon>FormBuscarItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormConsultaEmprestimo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +64,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormBuscarItem.resx">
+      <DependentUpon>FormBuscarItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormConsultaEmprestimo.resx">
       <DependentUpon>FormConsultaEmprestimo.cs</DependentUpon>
     </EmbeddedResource>
