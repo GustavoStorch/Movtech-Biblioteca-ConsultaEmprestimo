@@ -31,12 +31,10 @@
             this.lblNomeItemAcervo = new System.Windows.Forms.Label();
             this.txtNomeItemAcervo = new System.Windows.Forms.TextBox();
             this.dtgDadosItemAcervo = new System.Windows.Forms.DataGridView();
+            this.colCodItemAcervo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNomeItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTipoItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNomeLocal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNomeAutor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStatusItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNomeSecao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNumExemplar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtCodItem = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDadosItemAcervo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,81 +59,60 @@
             // 
             this.dtgDadosItemAcervo.AllowUserToAddRows = false;
             this.dtgDadosItemAcervo.AllowUserToDeleteRows = false;
+            this.dtgDadosItemAcervo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgDadosItemAcervo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgDadosItemAcervo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colCodItemAcervo,
             this.colNomeItem,
-            this.colTipoItem,
-            this.colNomeLocal,
-            this.colNomeAutor,
-            this.colStatusItem,
-            this.colNomeSecao});
+            this.colNumExemplar});
             this.dtgDadosItemAcervo.Location = new System.Drawing.Point(16, 54);
             this.dtgDadosItemAcervo.Name = "dtgDadosItemAcervo";
             this.dtgDadosItemAcervo.ReadOnly = true;
             this.dtgDadosItemAcervo.RowHeadersWidth = 62;
             this.dtgDadosItemAcervo.RowTemplate.Height = 28;
+            this.dtgDadosItemAcervo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgDadosItemAcervo.Size = new System.Drawing.Size(673, 312);
             this.dtgDadosItemAcervo.TabIndex = 2;
             this.dtgDadosItemAcervo.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgDadosItemAcervo_CellDoubleClick);
             // 
+            // colCodItemAcervo
+            // 
+            this.colCodItemAcervo.FillWeight = 15F;
+            this.colCodItemAcervo.HeaderText = "Código";
+            this.colCodItemAcervo.MinimumWidth = 8;
+            this.colCodItemAcervo.Name = "colCodItemAcervo";
+            this.colCodItemAcervo.ReadOnly = true;
+            // 
             // colNomeItem
             // 
-            this.colNomeItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colNomeItem.HeaderText = "Item Acervo";
             this.colNomeItem.MinimumWidth = 8;
             this.colNomeItem.Name = "colNomeItem";
             this.colNomeItem.ReadOnly = true;
             // 
-            // colTipoItem
+            // colNumExemplar
             // 
-            this.colTipoItem.HeaderText = "Tipo Item";
-            this.colTipoItem.MinimumWidth = 8;
-            this.colTipoItem.Name = "colTipoItem";
-            this.colTipoItem.ReadOnly = true;
-            this.colTipoItem.Visible = false;
-            this.colTipoItem.Width = 150;
+            this.colNumExemplar.HeaderText = "NumExemplar";
+            this.colNumExemplar.MinimumWidth = 8;
+            this.colNumExemplar.Name = "colNumExemplar";
+            this.colNumExemplar.ReadOnly = true;
+            this.colNumExemplar.Visible = false;
             // 
-            // colNomeLocal
+            // txtCodItem
             // 
-            this.colNomeLocal.HeaderText = "Local";
-            this.colNomeLocal.MinimumWidth = 8;
-            this.colNomeLocal.Name = "colNomeLocal";
-            this.colNomeLocal.ReadOnly = true;
-            this.colNomeLocal.Visible = false;
-            this.colNomeLocal.Width = 150;
-            // 
-            // colNomeAutor
-            // 
-            this.colNomeAutor.HeaderText = "Autor";
-            this.colNomeAutor.MinimumWidth = 8;
-            this.colNomeAutor.Name = "colNomeAutor";
-            this.colNomeAutor.ReadOnly = true;
-            this.colNomeAutor.Visible = false;
-            this.colNomeAutor.Width = 150;
-            // 
-            // colStatusItem
-            // 
-            this.colStatusItem.HeaderText = "Status Item";
-            this.colStatusItem.MinimumWidth = 8;
-            this.colStatusItem.Name = "colStatusItem";
-            this.colStatusItem.ReadOnly = true;
-            this.colStatusItem.Visible = false;
-            this.colStatusItem.Width = 150;
-            // 
-            // colNomeSecao
-            // 
-            this.colNomeSecao.HeaderText = "Secao";
-            this.colNomeSecao.MinimumWidth = 8;
-            this.colNomeSecao.Name = "colNomeSecao";
-            this.colNomeSecao.ReadOnly = true;
-            this.colNomeSecao.Visible = false;
-            this.colNomeSecao.Width = 150;
+            this.txtCodItem.Enabled = false;
+            this.txtCodItem.Location = new System.Drawing.Point(695, 352);
+            this.txtCodItem.Name = "txtCodItem";
+            this.txtCodItem.Size = new System.Drawing.Size(10, 26);
+            this.txtCodItem.TabIndex = 3;
+            this.txtCodItem.Visible = false;
             // 
             // FormBuscarItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(702, 380);
+            this.Controls.Add(this.txtCodItem);
             this.Controls.Add(this.dtgDadosItemAcervo);
             this.Controls.Add(this.txtNomeItemAcervo);
             this.Controls.Add(this.lblNomeItemAcervo);
@@ -154,11 +131,9 @@
         private System.Windows.Forms.Label lblNomeItemAcervo;
         private System.Windows.Forms.TextBox txtNomeItemAcervo;
         private System.Windows.Forms.DataGridView dtgDadosItemAcervo;
+        private System.Windows.Forms.TextBox txtCodItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCodItemAcervo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNomeItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTipoItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNomeLocal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNomeAutor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colStatusItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNomeSecao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNumExemplar;
     }
 }

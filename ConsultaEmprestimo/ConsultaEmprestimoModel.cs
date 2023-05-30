@@ -8,6 +8,8 @@ namespace ConsultaEmprestimo
 {
     public class ConsultaEmprestimoModel
     {
+        public string CodItem { get; set; }
+
         public string NomeItem { get; set; }
 
         public string TipoItem { get; set; }
@@ -19,6 +21,8 @@ namespace ConsultaEmprestimo
         public string NomeLeitor { get; set; }
 
         public string NomeSecao { get; set; }
+
+        public string nomeEditora { get; set; }
 
         public string DataReserva { get; set; }
 

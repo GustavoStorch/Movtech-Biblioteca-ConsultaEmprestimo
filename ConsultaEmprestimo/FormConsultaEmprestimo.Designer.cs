@@ -59,7 +59,7 @@
             this.colNomeAutor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNomeEditora = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSituacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.coDataReserva = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDataReserva = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDataRetorno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.gpxDadosConsultaEmprestimo.SuspendLayout();
@@ -109,6 +109,7 @@
             this.btnBuscarLeitor.Size = new System.Drawing.Size(58, 26);
             this.btnBuscarLeitor.TabIndex = 8;
             this.btnBuscarLeitor.UseVisualStyleBackColor = true;
+            this.btnBuscarLeitor.Click += new System.EventHandler(this.btnBuscarLeitor_Click);
             // 
             // btnBuscarAutor
             // 
@@ -163,6 +164,10 @@
             // 
             this.cbxSituacao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxSituacao.FormattingEnabled = true;
+            this.cbxSituacao.Items.AddRange(new object[] {
+            "Reservado",
+            "Emprestado",
+            "Disponível"});
             this.cbxSituacao.Location = new System.Drawing.Point(1006, 155);
             this.cbxSituacao.Name = "cbxSituacao";
             this.cbxSituacao.Size = new System.Drawing.Size(173, 28);
@@ -192,6 +197,7 @@
             this.txtNomeItem.Name = "txtNomeItem";
             this.txtNomeItem.Size = new System.Drawing.Size(224, 26);
             this.txtNomeItem.TabIndex = 1;
+            this.txtNomeItem.TextChanged += new System.EventHandler(this.txtNomeItem_TextChanged);
             // 
             // dtpDataDevolucao
             // 
@@ -261,6 +267,13 @@
             // 
             this.cbxTipoItem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxTipoItem.FormattingEnabled = true;
+            this.cbxTipoItem.Items.AddRange(new object[] {
+            "Livro",
+            "Revista",
+            "Jornal",
+            "DVD/CD",
+            "Folheto",
+            "Artigo"});
             this.cbxTipoItem.Location = new System.Drawing.Point(468, 112);
             this.cbxTipoItem.Name = "cbxTipoItem";
             this.cbxTipoItem.Size = new System.Drawing.Size(711, 28);
@@ -315,6 +328,7 @@
             this.btnConsultar.TabIndex = 16;
             this.btnConsultar.Text = "Consultar";
             this.btnConsultar.UseVisualStyleBackColor = true;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
             // dtgDadosEmprestimo
             // 
@@ -327,7 +341,7 @@
             this.colNomeAutor,
             this.colNomeEditora,
             this.colSituacao,
-            this.coDataReserva,
+            this.colDataReserva,
             this.colDataRetorno});
             this.dtgDadosEmprestimo.Location = new System.Drawing.Point(13, 255);
             this.dtgDadosEmprestimo.Name = "dtgDadosEmprestimo";
@@ -366,12 +380,12 @@
             this.colSituacao.Name = "colSituacao";
             this.colSituacao.ReadOnly = true;
             // 
-            // coDataReserva
+            // colDataReserva
             // 
-            this.coDataReserva.HeaderText = "Data Reserva";
-            this.coDataReserva.MinimumWidth = 8;
-            this.coDataReserva.Name = "coDataReserva";
-            this.coDataReserva.ReadOnly = true;
+            this.colDataReserva.HeaderText = "Data Reserva";
+            this.colDataReserva.MinimumWidth = 8;
+            this.colDataReserva.Name = "colDataReserva";
+            this.colDataReserva.ReadOnly = true;
             // 
             // colDataRetorno
             // 
@@ -388,6 +402,7 @@
             this.btnLimpar.TabIndex = 15;
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // FormConsultaEmprestimo
             // 
@@ -437,14 +452,14 @@
         private System.Windows.Forms.Button btnBuscarSecao;
         private System.Windows.Forms.Button btnBuscarLocal;
         private System.Windows.Forms.Button btnConsultar;
-        private System.Windows.Forms.DataGridView dtgDadosEmprestimo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNomeItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNomeAutor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNomeEditora;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSituacao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn coDataReserva;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDataRetorno;
-        private System.Windows.Forms.Button btnLimpar;
+        public System.Windows.Forms.DataGridView dtgDadosEmprestimo;
+        public System.Windows.Forms.Button btnLimpar;
+        public System.Windows.Forms.DataGridViewTextBoxColumn colNomeItem;
+        public System.Windows.Forms.DataGridViewTextBoxColumn colNomeAutor;
+        public System.Windows.Forms.DataGridViewTextBoxColumn colNomeEditora;
+        public System.Windows.Forms.DataGridViewTextBoxColumn colSituacao;
+        public System.Windows.Forms.DataGridViewTextBoxColumn colDataReserva;
+        public System.Windows.Forms.DataGridViewTextBoxColumn colDataRetorno;
     }
 }
 

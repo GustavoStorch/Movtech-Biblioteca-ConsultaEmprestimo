@@ -10,3 +10,4 @@ C:\Users\estagiario1\Documents\Movtech\Projeto 1\Movtech-Biblioteca-ConsultaEmpr
 C:\Users\estagiario1\Documents\Movtech\Projeto 1\Movtech-Biblioteca-ConsultaEmprestimo\ConsultaEmprestimo\obj\Debug\ConsultaEmprestimo.exe
 C:\Users\estagiario1\Documents\Movtech\Projeto 1\Movtech-Biblioteca-ConsultaEmprestimo\ConsultaEmprestimo\obj\Debug\ConsultaEmprestimo.pdb
 C:\Users\estagiario1\Documents\Movtech\Projeto 1\Movtech-Biblioteca-ConsultaEmprestimo\ConsultaEmprestimo\obj\Debug\ConsultaEmprestimo.FormBuscarItem.resources
+C:\Users\estagiario1\Documents\Movtech\Projeto 1\Movtech-Biblioteca-ConsultaEmprestimo\ConsultaEmprestimo\obj\Debug\ConsultaEmprestimo.FormBuscarLeitor.resources

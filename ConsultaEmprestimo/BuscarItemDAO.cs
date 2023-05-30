@@ -16,13 +16,85 @@ namespace ConsultaEmprestimo
             Connection = connection;
         }
 
+        public string GetNomeAutor(ConsultaEmprestimoModel consultaEmprestimo)
+        {
+            using (SqlCommand command = Connection.CreateCommand())
+            {
+                StringBuilder sql = new StringBuilder();
+                sql.AppendLine($"SELECT nomeAutor FROM mvtBibItemAcervo WHERE codItem = @codItem");
+                command.CommandText = sql.ToString();
+                command.Parameters.AddWithValue("@codItem", consultaEmprestimo.CodItem);
+                string result = Convert.ToString(command.ExecuteScalar());
+
+                if (result != null)
+                {
+                    return result.ToString();
+                }
+            }
+            return string.Empty;
+        }
+
+        public string GetNomeLocal(ConsultaEmprestimoModel consultaEmprestimo)
+        {
+            using (SqlCommand command = Connection.CreateCommand())
+            {
+                StringBuilder sql = new StringBuilder();
+                sql.AppendLine($"SELECT nomeLocal FROM mvtBibItemAcervo WHERE codItem = @codItem");
+                command.CommandText = sql.ToString();
+                command.Parameters.AddWithValue("@codItem", consultaEmprestimo.CodItem);
+                string result = Convert.ToString(command.ExecuteScalar());
+
+                if (result != null)
+                {
+                    return result.ToString();
+                }
+            }
+            return string.Empty;
+        }
+
+        public string GetNomeSecao(ConsultaEmprestimoModel consultaEmprestimo)
+        {
+            using (SqlCommand command = Connection.CreateCommand())
+            {
+                StringBuilder sql = new StringBuilder();
+                sql.AppendLine($"SELECT secao FROM mvtBibItemAcervo WHERE codItem = @codItem");
+                command.CommandText = sql.ToString();
+                command.Parameters.AddWithValue("@codItem", consultaEmprestimo.CodItem);
+                string result = Convert.ToString(command.ExecuteScalar());
+
+                if (result != null)
+                {
+                    return result.ToString();
+                }
+            }
+            return string.Empty;
+        }
+
+        public string GetTipoItem(ConsultaEmprestimoModel consultaEmprestimo)
+        {
+            using (SqlCommand command = Connection.CreateCommand())
+            {
+                StringBuilder sql = new StringBuilder();
+                sql.AppendLine($"SELECT tipoItem FROM mvtBibItemAcervo WHERE codItem = @codItem");
+                command.CommandText = sql.ToString();
+                command.Parameters.AddWithValue("@codItem", consultaEmprestimo.CodItem);
+                string result = Convert.ToString(command.ExecuteScalar());
+
+                if (result != null)
+                {
+                    return result.ToString();
+                }
+            }
+            return string.Empty;
+        }
+
         public List<ConsultaEmprestimoModel> GetItens()
         {
             List<ConsultaEmprestimoModel> itens = new List<ConsultaEmprestimoModel>();
             using (SqlCommand command = Connection.CreateCommand())
             {
                 StringBuilder sql = new StringBuilder();
-                sql.AppendLine("SELECT nome, tipoItem, nomeLocal, nomeAutor, secao, statusItem FROM mvtBibItemAcervo ORDER BY codItem");
+                sql.AppendLine("SELECT codItem, nome FROM mvtBibItemAcervo ORDER BY codItem");
                 command.CommandText = sql.ToString();
                 using (SqlDataReader dr = command.ExecuteReader())
                 {
@@ -38,45 +110,21 @@ namespace ConsultaEmprestimo
         public ConsultaEmprestimoModel PopulateDrItem(SqlDataReader dr)
         {
             string nome = "";
-            string tipoItem = "";
-            string nomeLocal = "";
-            string nomeAutor = "";
-            string secao = "";
-            string statusItem = "";
+            string codItem = "";
 
             if (DBNull.Value != dr["nome"])
             {
                 nome = dr["nome"] + "";
             }
-            if (DBNull.Value != dr["tipoItem"])
+            if (DBNull.Value != dr["codItem"])
             {
-                tipoItem = dr["tipoItem"] + "";
-            }
-            if (DBNull.Value != dr["nomeLocal"])
-            {
-                nomeLocal = dr["nomeLocal"] + "";
-            }
-            if (DBNull.Value != dr["nomeAutor"])
-            {
-                nomeAutor = dr["nomeAutor"] + "";
-            }
-            if (DBNull.Value != dr["secao"])
-            {
-                secao = dr["secao"] + "";
-            }
-            if (DBNull.Value != dr["statusItem"])
-            {
-                statusItem = dr["statusItem"] + "";
+                codItem = dr["codItem"] + "";
             }
 
             return new ConsultaEmprestimoModel()
             {
                 NomeItem = nome,
-                TipoItem = tipoItem,
-                NomeLocal = nomeLocal,
-                NomeAutor = nomeAutor,
-                NomeSecao = secao,
-                StatusItem = statusItem
+                CodItem = codItem
             };
         }
     }

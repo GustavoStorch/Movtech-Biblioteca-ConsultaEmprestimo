@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BuscarItemDAO.cs" />
+    <Compile Include="BuscarLeitorDAO.cs" />
     <Compile Include="ConsultaEmprestimoDAO.cs" />
     <Compile Include="ConsultaEmprestimoModel.cs" />
     <Compile Include="DaoConnection.cs" />
@@ -55,6 +56,12 @@
     </Compile>
     <Compile Include="FormBuscarItem.Designer.cs">
       <DependentUpon>FormBuscarItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormBuscarLeitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBuscarLeitor.Designer.cs">
+      <DependentUpon>FormBuscarLeitor.cs</DependentUpon>
     </Compile>
     <Compile Include="FormConsultaEmprestimo.cs">
       <SubType>Form</SubType>
@@ -66,6 +73,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormBuscarItem.resx">
       <DependentUpon>FormBuscarItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormBuscarLeitor.resx">
+      <DependentUpon>FormBuscarLeitor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormConsultaEmprestimo.resx">
       <DependentUpon>FormConsultaEmprestimo.cs</DependentUpon>
