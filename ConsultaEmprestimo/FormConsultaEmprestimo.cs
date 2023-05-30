@@ -44,35 +44,43 @@ namespace ConsultaEmprestimo
 
         public void CarregaFormBuscaItens()
         {
-            FormBuscarItem formBuscaItem = new FormBuscarItem();
-            formBuscaItem.ShowDialog();
-
-            txtNomeItem.Text = formBuscaItem.nomeItem;
-            codItemAcervo = formBuscaItem.codItem;
-
-            using (SqlConnection connection = DaoConnection.GetConexao())
+            try
             {
-                BuscarItemDAO dao = new BuscarItemDAO(connection);
 
-                txtNomeAutor.Text = dao.GetNomeAutor(new ConsultaEmprestimoModel()
-                {
-                    CodItem = codItemAcervo
-                });
 
-                txtNomeLocal.Text = dao.GetNomeLocal(new ConsultaEmprestimoModel()
-                {
-                    CodItem = codItemAcervo
-                });
+                FormBuscarItem formBuscaItem = new FormBuscarItem();
+                formBuscaItem.ShowDialog();
 
-                txtNomeSecao.Text = dao.GetNomeSecao(new ConsultaEmprestimoModel()
-                {
-                    CodItem = codItemAcervo
-                });
+                txtNomeItem.Text = formBuscaItem.nomeItem;
+                codItemAcervo = formBuscaItem.codItem;
 
-                cbxTipoItem.Text = dao.GetTipoItem(new ConsultaEmprestimoModel()
+                using (SqlConnection connection = DaoConnection.GetConexao())
                 {
-                    CodItem = codItemAcervo
-                });
+                    BuscarItemDAO dao = new BuscarItemDAO(connection);
+
+                    txtNomeAutor.Text = dao.GetNomeAutor(new ConsultaEmprestimoModel()
+                    {
+                        CodItem = codItemAcervo
+                    });
+
+                    txtNomeLocal.Text = dao.GetNomeLocal(new ConsultaEmprestimoModel()
+                    {
+                        CodItem = codItemAcervo
+                    });
+
+                    txtNomeSecao.Text = dao.GetNomeSecao(new ConsultaEmprestimoModel()
+                    {
+                        CodItem = codItemAcervo
+                    });
+
+                    cbxTipoItem.Text = dao.GetTipoItem(new ConsultaEmprestimoModel()
+                    {
+                        CodItem = codItemAcervo
+                    });
+                }
+            } catch(Exception ex)
+            {
+                throw ex;
             }
         }
 
@@ -92,61 +100,79 @@ namespace ConsultaEmprestimo
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-            DateTime dataReserva = dtpDataReserva.Value;
-            DateTime dataDevolucao = dtpDataDevolucao.Value;
+            if (string.IsNullOrEmpty(txtNomeItem.Text))
+            {
+                if (string.IsNullOrEmpty(txtNomeLeitor.Text))
+                {
+                    MessageBox.Show("Por favor preencha os campos!");
+                    return;
+                } else if(string.IsNullOrEmpty(txtNomeLeitor.Text) && string.IsNullOrEmpty(txtNomeItem.Text))
+                {
+                    MessageBox.Show("ERROR");
+                } else
+                {
+                    InitializeTablePorLeitor(dtgDadosEmprestimo);
+                }
+            } else
+            {
+                InitializeTablePorItem(dtgDadosEmprestimo);
+            }
+            //falta ajustar aqui em cima, colocando um if para verificar o txtNomeLeitor dentro do else que valida o txtNomeItem.
+        }
+
+        public void InitializeTablePorItem(DataGridView dataGridView)
+        {
+            dataGridView.Rows.Clear();
 
             using (SqlConnection connection = DaoConnection.GetConexao())
             {
-
-                string query = "SELECT TOP 1 r.nomeItem, i.nomeAutor, i.nomeEditora, r.statusItem, r.dataReserva, r.prazoReserva " +
-                               "FROM mvtBibReserva r " +
-                               "INNER JOIN mvtBibItemAcervo i ON r.codItem = i.codItem " +
-                               "WHERE r.nomeItem LIKE '%' + @nomeItem + '%' " +
-                               "OR r.nomeLeitor LIKE '%' + @nomeLeitor + '%' " +
-                               "AND r.statusItem = @statusItem ORDER BY codReserva desc";
-
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@nomeItem", txtNomeItem.Text);
-                command.Parameters.AddWithValue("@nomeLeitor", txtNomeLeitor.Text);
-                command.Parameters.AddWithValue("@statusItem", cbxSituacao.Text);
-
-                using (SqlDataReader reader = command.ExecuteReader())
+                ConsultaEmprestimoDAO dao = new ConsultaEmprestimoDAO(connection);
+                List<ConsultaEmprestimoModel> emprestimos = dao.BuscarEmprestimosPorItem(new ConsultaEmprestimoModel()
                 {
-                    dtgDadosEmprestimo.Rows.Clear();
+                    NomeItem = txtNomeItem.Text,
+                    NomeLeitor = txtNomeLeitor.Text,
+                    StatusItem = cbxSituacao.Text
+                });
 
-                    while (reader.Read())
-                    {
-                        DataGridViewRow row = dtgDadosEmprestimo.Rows[dtgDadosEmprestimo.Rows.Add()];
-                        row.Cells[colNomeItem.Index].Value = reader["nomeItem"].ToString();
-                        //row.Cells[colNomeAutor.Index].Value = reader["tipoItem"].ToString(); (PRECISA DE INNER JOIN)
-                        row.Cells[colNomeEditora.Index].Value = reader["nomeEditora"].ToString();
-                        row.Cells[colSituacao.Index].Value = reader["statusItem"].ToString();
-                        row.Cells[colNomeAutor.Index].Value = reader["nomeAutor"].ToString();
-                        row.Cells[colDataReserva.Index].Value = reader["dataReserva"].ToString();
-                        row.Cells[colDataRetorno.Index].Value = reader["prazoReserva"].ToString();
-                    }
+                foreach (ConsultaEmprestimoModel emprestimo in emprestimos)
+                {
+                    DataGridViewRow row = dataGridView.Rows[dataGridView.Rows.Add()];
+                    row.Cells[colNomeItem.Index].Value = emprestimo.NomeItem;
+                    row.Cells[colNomeAutor.Index].Value = emprestimo.NomeAutor;
+                    row.Cells[colNomeEditora.Index].Value = emprestimo.NomeEditora;
+                    row.Cells[colSituacao.Index].Value = emprestimo.StatusItem;
+                    row.Cells[colDataReserva.Index].Value = emprestimo.DataReserva;
+                    row.Cells[colDataRetorno.Index].Value = emprestimo.DataRetorno;
                 }
             }
-
-            /*try
-            {
-                using (SqlConnection connection = DaoConnection.GetConexao())
-                {
-                    ConsultaEmprestimoDAO dao = new ConsultaEmprestimoDAO(connection);
-
-                    dao.BuscarEmprestimosPorItem(new ConsultaEmprestimoModel()
-                    {
-                        NomeItem = txtNomeItem.Text,
-                        StatusItem = cbxSituacao.Text,
-                        NomeLeitor = txtNomeLeitor.Text
-                    });
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Houve um problema ao realizar a consulta!\n{ex.Message}");
-            }*/
         }
+
+        public void InitializeTablePorLeitor(DataGridView dataGridView)
+        {
+            dataGridView.Rows.Clear();
+
+            using (SqlConnection connection = DaoConnection.GetConexao())
+            {
+                ConsultaEmprestimoDAO dao = new ConsultaEmprestimoDAO(connection);
+                List<ConsultaEmprestimoModel> emprestimos = dao.BuscarEmprestimosPorLeitor(new ConsultaEmprestimoModel()
+                {
+                    NomeLeitor = txtNomeLeitor.Text
+                });
+
+                foreach (ConsultaEmprestimoModel emprestimo in emprestimos)
+                {
+                    DataGridViewRow row = dataGridView.Rows[dataGridView.Rows.Add()];
+                    row.Cells[colNomeItem.Index].Value = emprestimo.NomeItem;
+                    row.Cells[colNomeAutor.Index].Value = emprestimo.NomeAutor;
+                    row.Cells[colNomeEditora.Index].Value = emprestimo.NomeEditora;
+                    row.Cells[colSituacao.Index].Value = emprestimo.StatusItem;
+                    row.Cells[colDataReserva.Index].Value = emprestimo.DataReserva;
+                    row.Cells[colDataRetorno.Index].Value = emprestimo.DataRetorno;
+                }
+            }
+        }
+
+
 
         private void txtNomeItem_TextChanged(object sender, EventArgs e)
         {
@@ -171,6 +197,18 @@ namespace ConsultaEmprestimo
                 btnBuscarAutor.Enabled = false;
                 btnBuscarLocal.Enabled = false;
                 btnBuscarSecao.Enabled = false;
+            }
+        }
+
+        private void txtNomeLeitor_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtNomeLeitor.Text))
+            {
+                btnLimpar.Enabled = false;
+            }
+            else
+            {
+                btnLimpar.Enabled = true;
             }
         }
     }

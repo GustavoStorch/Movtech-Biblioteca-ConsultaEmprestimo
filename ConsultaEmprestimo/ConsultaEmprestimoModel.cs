@@ -12,6 +12,9 @@ namespace ConsultaEmprestimo
 
         public string NomeItem { get; set; }
 
+
+        public string NomeEditora { get; set; }
+
         public string TipoItem { get; set; }
 
         public string NomeLocal { get; set; }
