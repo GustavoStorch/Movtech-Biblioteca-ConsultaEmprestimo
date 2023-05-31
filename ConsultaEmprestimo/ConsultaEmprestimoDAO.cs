@@ -18,70 +18,7 @@ namespace ConsultaEmprestimo
             Connection = connection;
         }
 
-        public List<ConsultaEmprestimoModel> BuscarEmprestimosPorItem(ConsultaEmprestimoModel consulta)
-        {
-            List<ConsultaEmprestimoModel> buscas = new List<ConsultaEmprestimoModel>();
-
-            using (SqlCommand command = Connection.CreateCommand())
-            {
-                StringBuilder sql = new StringBuilder();
-                sql.AppendLine("SELECT TOP 1 r.nomeItem, i.nomeAutor, i.nomeEditora, r.statusItem, r.dataReserva, r.prazoReserva");
-                sql.AppendLine("FROM mvtBibReserva r INNER JOIN mvtBibItemAcervo i ON r.codItem = i.codItem");
-                sql.AppendLine("WHERE r.nomeItem LIKE '%' + @nomeItem + '%'");
-                sql.AppendLine("OR r.nomeLeitor LIKE '%' + @nomeLeitor + '%'");
-                sql.AppendLine("AND r.statusItem = @statusItem ORDER BY codReserva desc");
-
-                command.Parameters.AddWithValue("@nomeItem", consulta.NomeItem);
-                command.Parameters.AddWithValue("@nomeLeitor", consulta.NomeLeitor);
-                command.Parameters.AddWithValue("@statusItem", consulta.StatusItem);
-
-                command.CommandText = sql.ToString();
-
-                using (SqlDataReader dr = command.ExecuteReader())
-                {
-                    while (dr.Read())
-                    {
-                        buscas.Add(PopulateDrBuscaPorItem(dr));
-                    }
-                }
-            }
-
-            return buscas;
-        }
-
-        private ConsultaEmprestimoModel PopulateDrBuscaPorItem(SqlDataReader dr)
-        {
-            ConsultaEmprestimoModel model = new ConsultaEmprestimoModel();
-
-            if (DBNull.Value != dr["nomeItem"])
-            {
-                model.NomeItem = dr["nomeItem"].ToString();
-            }
-            if (DBNull.Value != dr["nomeAutor"])
-            {
-                model.NomeAutor = dr["nomeAutor"].ToString();
-            }
-            if (DBNull.Value != dr["nomeEditora"])
-            {
-                model.NomeEditora = dr["nomeEditora"].ToString();
-            }
-            if (DBNull.Value != dr["statusItem"])
-            {
-                model.StatusItem = dr["statusItem"].ToString();
-            }
-            if (DBNull.Value != dr["dataReserva"])
-            {
-                model.DataReserva = dr["dataReserva"].ToString();
-            }
-            if (DBNull.Value != dr["prazoReserva"])
-            {
-                model.DataRetorno = dr["prazoReserva"].ToString();
-            }
-
-            return model;
-        }
-
-        public List<ConsultaEmprestimoModel> BuscarEmprestimosPorLeitor(ConsultaEmprestimoModel consulta)
+        public List<ConsultaEmprestimoModel> BuscarEmprestimos(ConsultaEmprestimoModel consulta)
         {
             List<ConsultaEmprestimoModel> buscas = new List<ConsultaEmprestimoModel>();
 
@@ -90,8 +27,24 @@ namespace ConsultaEmprestimo
                 StringBuilder sql = new StringBuilder();
                 sql.AppendLine("SELECT r.nomeItem, i.nomeAutor, i.nomeEditora, r.statusItem, r.dataReserva, r.prazoReserva");
                 sql.AppendLine("FROM mvtBibReserva r INNER JOIN mvtBibItemAcervo i ON r.codItem = i.codItem");
-                sql.AppendLine("WHERE r.nomeLeitor LIKE '%' + @nomeLeitor + '%' ORDER BY r.codReserva");
-                command.Parameters.AddWithValue("@nomeLeitor", consulta.NomeLeitor);
+                sql.AppendLine("WHERE 1 = 1");
+                if (!string.IsNullOrEmpty(consulta.NomeItem))
+                {
+                    sql.AppendLine($"AND r.nomeItem LIKE '%{consulta.NomeItem}%'");
+                }
+                if (!string.IsNullOrEmpty(consulta.NomeLeitor))
+                {
+                    sql.AppendLine($"AND r.nomeLeitor LIKE '%{consulta.NomeLeitor}%'");
+                }
+                if (!string.IsNullOrEmpty(consulta.StatusItem))
+                {
+                    sql.AppendLine($"AND r.statusItem LIKE '%{consulta.StatusItem}%'");
+                }
+                if (!string.IsNullOrEmpty(consulta.NomeAutor))
+                {
+                    sql.AppendLine($"AND i.nomeAutor LIKE '%{consulta.NomeAutor}%'");
+                }
+                
 
                 command.CommandText = sql.ToString();
 
@@ -99,15 +52,14 @@ namespace ConsultaEmprestimo
                 {
                     while (dr.Read())
                     {
-                        buscas.Add(PopulateDrBuscaPorLeitor(dr));
+                        buscas.Add(PopulateDrBusca(dr));
                     }
                 }
             }
-
             return buscas;
         }
 
-        private ConsultaEmprestimoModel PopulateDrBuscaPorLeitor(SqlDataReader dr)
+        private ConsultaEmprestimoModel PopulateDrBusca(SqlDataReader dr)
         {
             ConsultaEmprestimoModel model = new ConsultaEmprestimoModel();
 

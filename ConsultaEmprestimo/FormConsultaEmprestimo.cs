@@ -46,8 +46,6 @@ namespace ConsultaEmprestimo
         {
             try
             {
-
-
                 FormBuscarItem formBuscaItem = new FormBuscarItem();
                 formBuscaItem.ShowDialog();
 
@@ -100,38 +98,22 @@ namespace ConsultaEmprestimo
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtNomeItem.Text))
-            {
-                if (string.IsNullOrEmpty(txtNomeLeitor.Text))
-                {
-                    MessageBox.Show("Por favor preencha os campos!");
-                    return;
-                } else if(string.IsNullOrEmpty(txtNomeLeitor.Text) && string.IsNullOrEmpty(txtNomeItem.Text))
-                {
-                    MessageBox.Show("ERROR");
-                } else
-                {
-                    InitializeTablePorLeitor(dtgDadosEmprestimo);
-                }
-            } else
-            {
-                InitializeTablePorItem(dtgDadosEmprestimo);
-            }
-            //falta ajustar aqui em cima, colocando um if para verificar o txtNomeLeitor dentro do else que valida o txtNomeItem.
+            InitializeTable(dtgDadosEmprestimo);
         }
 
-        public void InitializeTablePorItem(DataGridView dataGridView)
+        public void InitializeTable(DataGridView dataGridView)
         {
             dataGridView.Rows.Clear();
 
             using (SqlConnection connection = DaoConnection.GetConexao())
             {
                 ConsultaEmprestimoDAO dao = new ConsultaEmprestimoDAO(connection);
-                List<ConsultaEmprestimoModel> emprestimos = dao.BuscarEmprestimosPorItem(new ConsultaEmprestimoModel()
+                List<ConsultaEmprestimoModel> emprestimos = dao.BuscarEmprestimos(new ConsultaEmprestimoModel()
                 {
                     NomeItem = txtNomeItem.Text,
                     NomeLeitor = txtNomeLeitor.Text,
-                    StatusItem = cbxSituacao.Text
+                    StatusItem = cbxSituacao.Text,
+                    NomeAutor = txtNomeAutor.Text
                 });
 
                 foreach (ConsultaEmprestimoModel emprestimo in emprestimos)
@@ -141,38 +123,11 @@ namespace ConsultaEmprestimo
                     row.Cells[colNomeAutor.Index].Value = emprestimo.NomeAutor;
                     row.Cells[colNomeEditora.Index].Value = emprestimo.NomeEditora;
                     row.Cells[colSituacao.Index].Value = emprestimo.StatusItem;
-                    row.Cells[colDataReserva.Index].Value = emprestimo.DataReserva;
-                    row.Cells[colDataRetorno.Index].Value = emprestimo.DataRetorno;
+                    row.Cells[colDataReserva.Index].Value = emprestimo.DataReserva.Substring(0, 10);
+                    row.Cells[colDataRetorno.Index].Value = emprestimo.DataRetorno.Substring(0, 10);
                 }
             }
         }
-
-        public void InitializeTablePorLeitor(DataGridView dataGridView)
-        {
-            dataGridView.Rows.Clear();
-
-            using (SqlConnection connection = DaoConnection.GetConexao())
-            {
-                ConsultaEmprestimoDAO dao = new ConsultaEmprestimoDAO(connection);
-                List<ConsultaEmprestimoModel> emprestimos = dao.BuscarEmprestimosPorLeitor(new ConsultaEmprestimoModel()
-                {
-                    NomeLeitor = txtNomeLeitor.Text
-                });
-
-                foreach (ConsultaEmprestimoModel emprestimo in emprestimos)
-                {
-                    DataGridViewRow row = dataGridView.Rows[dataGridView.Rows.Add()];
-                    row.Cells[colNomeItem.Index].Value = emprestimo.NomeItem;
-                    row.Cells[colNomeAutor.Index].Value = emprestimo.NomeAutor;
-                    row.Cells[colNomeEditora.Index].Value = emprestimo.NomeEditora;
-                    row.Cells[colSituacao.Index].Value = emprestimo.StatusItem;
-                    row.Cells[colDataReserva.Index].Value = emprestimo.DataReserva;
-                    row.Cells[colDataRetorno.Index].Value = emprestimo.DataRetorno;
-                }
-            }
-        }
-
-
 
         private void txtNomeItem_TextChanged(object sender, EventArgs e)
         {
@@ -186,6 +141,8 @@ namespace ConsultaEmprestimo
                 btnBuscarAutor.Enabled = true;
                 btnBuscarLocal.Enabled = true;
                 btnBuscarSecao.Enabled = true;
+                dtpDataDevolucao.Enabled = true;
+                dtpDataReserva.Enabled = true;
             }
             else
             {
@@ -197,6 +154,8 @@ namespace ConsultaEmprestimo
                 btnBuscarAutor.Enabled = false;
                 btnBuscarLocal.Enabled = false;
                 btnBuscarSecao.Enabled = false;
+                dtpDataDevolucao.Enabled = false;
+                dtpDataReserva.Enabled = false;
             }
         }
 
@@ -205,10 +164,14 @@ namespace ConsultaEmprestimo
             if (string.IsNullOrEmpty(txtNomeLeitor.Text))
             {
                 btnLimpar.Enabled = false;
+                dtpDataDevolucao.Enabled = true;
+                dtpDataReserva.Enabled = true;
             }
             else
             {
                 btnLimpar.Enabled = true;
+                dtpDataDevolucao.Enabled = false;
+                dtpDataReserva.Enabled = false;
             }
         }
     }
