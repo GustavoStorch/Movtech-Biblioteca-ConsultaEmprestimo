@@ -27,3 +27,6 @@ C:\Users\Gustavo\Documents\Movtech\Projeto 1\Movtech-Biblioteca-ConsultaEmpresti
 C:\Users\estagiario1\Documents\Movtech\Projeto 1\Movtech-Biblioteca-ConsultaEmprestimo\ConsultaEmprestimo\obj\Debug\ConsultaEmprestimo.FormBuscarAutor.resources
 C:\Users\estagiario1\Documents\Movtech\Projeto 1\Movtech-Biblioteca-ConsultaEmprestimo\ConsultaEmprestimo\obj\Debug\ConsultaEmprestimo.FormBuscarLocal.resources
 C:\Users\estagiario1\Documents\Movtech\Projeto 1\Movtech-Biblioteca-ConsultaEmprestimo\ConsultaEmprestimo\obj\Debug\ConsultaEmprestimo.FormBuscarSecao.resources
+C:\Users\Gustavo\Documents\Movtech\Projeto 1\Movtech-Biblioteca-ConsultaEmprestimo\ConsultaEmprestimo\obj\Debug\ConsultaEmprestimo.FormBuscarAutor.resources
+C:\Users\Gustavo\Documents\Movtech\Projeto 1\Movtech-Biblioteca-ConsultaEmprestimo\ConsultaEmprestimo\obj\Debug\ConsultaEmprestimo.FormBuscarLocal.resources
+C:\Users\Gustavo\Documents\Movtech\Projeto 1\Movtech-Biblioteca-ConsultaEmprestimo\ConsultaEmprestimo\obj\Debug\ConsultaEmprestimo.FormBuscarSecao.resources

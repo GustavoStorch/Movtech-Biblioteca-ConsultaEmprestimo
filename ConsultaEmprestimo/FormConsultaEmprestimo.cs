@@ -23,6 +23,10 @@ namespace ConsultaEmprestimo
         private void FormConsultaEmprestimo_Load(object sender, EventArgs e)
         {
             btnLimpar.Enabled = false;
+            //dtpDataReserva.CustomFormat = " ";
+            //dtpDataReserva.Format = DateTimePickerFormat.Custom;
+            //dtpDataDevolucao.CustomFormat = " ";
+            //dtpDataDevolucao.Format = DateTimePickerFormat.Custom;
         }
 
         private void btnBuscarItem_Click(object sender, EventArgs e)
@@ -151,7 +155,10 @@ namespace ConsultaEmprestimo
                     StatusItem = cbxSituacao.Text,
                     NomeAutor = txtNomeAutor.Text,
                     NomeLocal = txtNomeLocal.Text,
-                    NomeSecao = txtNomeSecao.Text
+                    NomeSecao = txtNomeSecao.Text,
+                    TipoItem = cbxTipoItem.Text,
+                    DataReserva = dtpDataReserva.Value.Date.ToString(),
+                    DataRetorno = dtpDataDevolucao.Value.Date.ToString()
                 });
 
                 foreach (ConsultaEmprestimoModel emprestimo in emprestimos)

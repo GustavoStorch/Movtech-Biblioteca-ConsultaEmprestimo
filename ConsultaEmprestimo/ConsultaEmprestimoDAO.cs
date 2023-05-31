@@ -25,33 +25,50 @@ namespace ConsultaEmprestimo
             using (SqlCommand command = Connection.CreateCommand())
             {
                 StringBuilder sql = new StringBuilder();
-                sql.AppendLine("SELECT r.nomeItem, i.nomeAutor, i.nomeEditora, r.statusItem, r.dataReserva, r.prazoReserva");
+                sql.AppendLine("SELECT DISTINCT i.nome, i.nomeAutor, i.nomeEditora, i.statusItem, r.dataReserva, r.prazoReserva");                
                 sql.AppendLine("FROM mvtBibReserva r INNER JOIN mvtBibItemAcervo i ON r.codItem = i.codItem");
                 sql.AppendLine("WHERE 1 = 1");
                 if (!string.IsNullOrEmpty(consulta.NomeItem))
                 {
-                    sql.AppendLine($"AND r.nomeItem LIKE '%{consulta.NomeItem}%'");
+                    sql.AppendLine($"AND i.nome LIKE '%' + @NomeItem + '%'");
+                    command.Parameters.AddWithValue("@NomeItem", consulta.NomeItem);
                 }
                 if (!string.IsNullOrEmpty(consulta.NomeLeitor))
                 {
-                    sql.AppendLine($"AND r.nomeLeitor LIKE '%{consulta.NomeLeitor}%'");
+                    sql.AppendLine($"AND r.nomeLeitor LIKE '%' + @nomeLeitor + '%'");
+                    command.Parameters.AddWithValue("@nomeLeitor", consulta.NomeLeitor);
                 }
                 if (!string.IsNullOrEmpty(consulta.StatusItem))
                 {
-                    sql.AppendLine($"AND r.statusItem LIKE '%{consulta.StatusItem}%'");
+                    sql.AppendLine($"AND i.statusItem LIKE '%' + @statusItem + '%'");
+                    command.Parameters.AddWithValue("@statusItem", consulta.StatusItem);
                 }
                 if (!string.IsNullOrEmpty(consulta.NomeAutor))
                 {
-                    sql.AppendLine($"AND i.nomeAutor LIKE '%{consulta.NomeAutor}%'");
+                    sql.AppendLine($"AND i.nomeAutor LIKE '%' + @nomeAutor + '%'");
+                    command.Parameters.AddWithValue("@nomeAutor", consulta.NomeAutor);
                 }
                 if (!string.IsNullOrEmpty(consulta.NomeLocal))
                 {
-                    sql.AppendLine($"AND i.nomeLocal LIKE '%{consulta.NomeLocal}%'");
+                    sql.AppendLine($"AND i.nomeLocal LIKE '%' + @nomeLocal + '%'");
+                    command.Parameters.AddWithValue("@nomeLocal", consulta.NomeLocal);
                 }
                 if (!string.IsNullOrEmpty(consulta.NomeSecao))
                 {
-                    sql.AppendLine($"AND i.secao LIKE '%{consulta.NomeSecao}%'");
+                    sql.AppendLine($"AND i.secao LIKE '%' + @secao + '%'");
+                    command.Parameters.AddWithValue("@secao", consulta.NomeSecao);
                 }
+                if (!string.IsNullOrEmpty(consulta.TipoItem))
+                {
+                    sql.AppendLine($"AND i.tipoItem LIKE '%' + @tipoItem + '%'");
+                    command.Parameters.AddWithValue("@tipoItem", consulta.TipoItem);
+                }
+                /*if (!string.IsNullOrEmpty(consulta.DataReserva) && !string.IsNullOrEmpty(consulta.DataRetorno))
+                {
+                    sql.AppendLine($"AND r.prazoReserva >= @DataInicio AND r.prazoReserva <= @DataFim");
+                    command.Parameters.AddWithValue("@DataInicio", consulta.DataReserva);
+                    command.Parameters.AddWithValue("@DataFim", consulta.DataRetorno);
+                }*/
 
                 command.CommandText = sql.ToString();
 
@@ -70,9 +87,9 @@ namespace ConsultaEmprestimo
         {
             ConsultaEmprestimoModel model = new ConsultaEmprestimoModel();
 
-            if (DBNull.Value != dr["nomeItem"])
+            if (DBNull.Value != dr["nome"])
             {
-                model.NomeItem = dr["nomeItem"].ToString();
+                model.NomeItem = dr["nome"].ToString();
             }
             if (DBNull.Value != dr["nomeAutor"])
             {
