@@ -24,3 +24,6 @@ C:\Users\Gustavo\Documents\Movtech\Projeto 1\Movtech-Biblioteca-ConsultaEmpresti
 C:\Users\Gustavo\Documents\Movtech\Projeto 1\Movtech-Biblioteca-ConsultaEmprestimo\ConsultaEmprestimo\obj\Debug\ConsultaEmprestimo.csproj.CoreCompileInputs.cache
 C:\Users\Gustavo\Documents\Movtech\Projeto 1\Movtech-Biblioteca-ConsultaEmprestimo\ConsultaEmprestimo\obj\Debug\ConsultaEmprestimo.exe
 C:\Users\Gustavo\Documents\Movtech\Projeto 1\Movtech-Biblioteca-ConsultaEmprestimo\ConsultaEmprestimo\obj\Debug\ConsultaEmprestimo.pdb
+C:\Users\estagiario1\Documents\Movtech\Projeto 1\Movtech-Biblioteca-ConsultaEmprestimo\ConsultaEmprestimo\obj\Debug\ConsultaEmprestimo.FormBuscarAutor.resources
+C:\Users\estagiario1\Documents\Movtech\Projeto 1\Movtech-Biblioteca-ConsultaEmprestimo\ConsultaEmprestimo\obj\Debug\ConsultaEmprestimo.FormBuscarLocal.resources
+C:\Users\estagiario1\Documents\Movtech\Projeto 1\Movtech-Biblioteca-ConsultaEmprestimo\ConsultaEmprestimo\obj\Debug\ConsultaEmprestimo.FormBuscarSecao.resources

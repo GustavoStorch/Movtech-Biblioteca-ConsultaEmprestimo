@@ -44,7 +44,14 @@ namespace ConsultaEmprestimo
                 {
                     sql.AppendLine($"AND i.nomeAutor LIKE '%{consulta.NomeAutor}%'");
                 }
-                
+                if (!string.IsNullOrEmpty(consulta.NomeLocal))
+                {
+                    sql.AppendLine($"AND i.nomeLocal LIKE '%{consulta.NomeLocal}%'");
+                }
+                if (!string.IsNullOrEmpty(consulta.NomeSecao))
+                {
+                    sql.AppendLine($"AND i.secao LIKE '%{consulta.NomeSecao}%'");
+                }
 
                 command.CommandText = sql.ToString();
 

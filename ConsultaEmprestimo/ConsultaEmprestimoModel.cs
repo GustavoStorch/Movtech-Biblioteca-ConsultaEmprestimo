@@ -12,18 +12,23 @@ namespace ConsultaEmprestimo
 
         public string NomeItem { get; set; }
 
-
         public string NomeEditora { get; set; }
 
         public string TipoItem { get; set; }
 
         public string NomeLocal { get; set; }
 
+        public string CodLocal { get; set; }
+
         public string NomeAutor { get; set; }
+
+        public string CodAutor { get; set; }
 
         public string NomeLeitor { get; set; }
 
         public string NomeSecao { get; set; }
+
+        public string CodSecao { get; set; }
 
         public string nomeEditora { get; set; }
 

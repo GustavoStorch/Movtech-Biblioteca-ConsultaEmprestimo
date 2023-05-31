@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBuscarItem));
             this.lblNomeItemAcervo = new System.Windows.Forms.Label();
             this.txtNomeItemAcervo = new System.Windows.Forms.TextBox();
             this.dtgDadosItemAcervo = new System.Windows.Forms.DataGridView();
@@ -49,6 +50,8 @@
             // 
             // txtNomeItemAcervo
             // 
+            this.txtNomeItemAcervo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNomeItemAcervo.Location = new System.Drawing.Point(63, 12);
             this.txtNomeItemAcervo.Name = "txtNomeItemAcervo";
             this.txtNomeItemAcervo.Size = new System.Drawing.Size(626, 26);
@@ -59,6 +62,9 @@
             // 
             this.dtgDadosItemAcervo.AllowUserToAddRows = false;
             this.dtgDadosItemAcervo.AllowUserToDeleteRows = false;
+            this.dtgDadosItemAcervo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgDadosItemAcervo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgDadosItemAcervo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgDadosItemAcervo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -73,6 +79,7 @@
             this.dtgDadosItemAcervo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgDadosItemAcervo.Size = new System.Drawing.Size(673, 312);
             this.dtgDadosItemAcervo.TabIndex = 2;
+            this.dtgDadosItemAcervo.TabStop = false;
             this.dtgDadosItemAcervo.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgDadosItemAcervo_CellDoubleClick);
             // 
             // colCodItemAcervo
@@ -116,6 +123,7 @@
             this.Controls.Add(this.dtgDadosItemAcervo);
             this.Controls.Add(this.txtNomeItemAcervo);
             this.Controls.Add(this.lblNomeItemAcervo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormBuscarItem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Buscar Item do Acervo";

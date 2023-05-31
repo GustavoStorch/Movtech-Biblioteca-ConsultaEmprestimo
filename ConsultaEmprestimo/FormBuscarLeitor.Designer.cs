@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBuscarLeitor));
             this.txtNomeLeitor = new System.Windows.Forms.TextBox();
             this.lblNomeItemAcervo = new System.Windows.Forms.Label();
             this.dtgDadosLeitor = new System.Windows.Forms.DataGridView();
@@ -37,6 +38,8 @@
             // 
             // txtNomeLeitor
             // 
+            this.txtNomeLeitor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNomeLeitor.Location = new System.Drawing.Point(63, 16);
             this.txtNomeLeitor.Name = "txtNomeLeitor";
             this.txtNomeLeitor.Size = new System.Drawing.Size(626, 26);
@@ -56,6 +59,9 @@
             // 
             this.dtgDadosLeitor.AllowUserToAddRows = false;
             this.dtgDadosLeitor.AllowUserToDeleteRows = false;
+            this.dtgDadosLeitor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgDadosLeitor.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgDadosLeitor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgDadosLeitor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -85,6 +91,7 @@
             this.Controls.Add(this.dtgDadosLeitor);
             this.Controls.Add(this.txtNomeLeitor);
             this.Controls.Add(this.lblNomeItemAcervo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormBuscarLeitor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Buscar Leitor";

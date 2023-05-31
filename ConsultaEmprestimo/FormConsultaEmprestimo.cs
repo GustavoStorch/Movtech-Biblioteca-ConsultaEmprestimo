@@ -35,6 +35,42 @@ namespace ConsultaEmprestimo
             CarregaFormBuscaLeitores();
         }
 
+        private void btnBuscarAutor_Click(object sender, EventArgs e)
+        {
+            CarregaFormBuscaAutores();
+        }
+
+        private void btnBuscarLocal_Click(object sender, EventArgs e)
+        {
+            CarregaFormBuscaLocal();
+        }
+
+        private void btnBuscarSecao_Click(object sender, EventArgs e)
+        {
+            CarregaFormBuscaSecao();
+        }
+
+        public void CarregaFormBuscaLocal()
+        {
+            FormBuscarLocal formBuscarLocal = new FormBuscarLocal();
+            formBuscarLocal.ShowDialog();
+            txtNomeLocal.Text = formBuscarLocal.nomeLocal;
+        }
+
+        public void CarregaFormBuscaSecao()
+        {
+            FormBuscarSecao formBuscarSecao = new FormBuscarSecao();
+            formBuscarSecao.ShowDialog();
+            txtNomeSecao.Text = formBuscarSecao.nomeSecao;
+        }
+
+        public void CarregaFormBuscaAutores()
+        {
+            FormBuscarAutor formBuscarAutor = new FormBuscarAutor();
+            formBuscarAutor.ShowDialog();
+            txtNomeAutor.Text = formBuscarAutor.nomeAutor;
+        }
+
         public void CarregaFormBuscaLeitores()
         {
             FormBuscarLeitor formBuscarLeitor = new FormBuscarLeitor();
@@ -113,7 +149,9 @@ namespace ConsultaEmprestimo
                     NomeItem = txtNomeItem.Text,
                     NomeLeitor = txtNomeLeitor.Text,
                     StatusItem = cbxSituacao.Text,
-                    NomeAutor = txtNomeAutor.Text
+                    NomeAutor = txtNomeAutor.Text,
+                    NomeLocal = txtNomeLocal.Text,
+                    NomeSecao = txtNomeSecao.Text
                 });
 
                 foreach (ConsultaEmprestimoModel emprestimo in emprestimos)
