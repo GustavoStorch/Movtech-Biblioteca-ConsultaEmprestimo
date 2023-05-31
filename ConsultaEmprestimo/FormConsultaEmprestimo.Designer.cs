@@ -181,6 +181,7 @@
             this.cbxSituacao.Name = "cbxSituacao";
             this.cbxSituacao.Size = new System.Drawing.Size(174, 28);
             this.cbxSituacao.TabIndex = 14;
+            this.cbxSituacao.TextChanged += new System.EventHandler(this.cbxSituacao_TextChanged);
             // 
             // lblNomeItem
             // 
@@ -239,6 +240,7 @@
             this.txtNomeLocal.Name = "txtNomeLocal";
             this.txtNomeLocal.Size = new System.Drawing.Size(220, 26);
             this.txtNomeLocal.TabIndex = 5;
+            this.txtNomeLocal.TextChanged += new System.EventHandler(this.txtNomeLocal_TextChanged);
             // 
             // dtpDataReserva
             // 
@@ -271,6 +273,7 @@
             this.txtNomeSecao.Name = "txtNomeSecao";
             this.txtNomeSecao.Size = new System.Drawing.Size(220, 26);
             this.txtNomeSecao.TabIndex = 9;
+            this.txtNomeSecao.TextChanged += new System.EventHandler(this.txtNomeSecao_TextChanged);
             // 
             // cbxTipoItem
             // 
@@ -289,6 +292,7 @@
             this.cbxTipoItem.Name = "cbxTipoItem";
             this.cbxTipoItem.Size = new System.Drawing.Size(710, 28);
             this.cbxTipoItem.TabIndex = 11;
+            this.cbxTipoItem.TextChanged += new System.EventHandler(this.cbxTipoItem_TextChanged);
             // 
             // lblNomeLeitor
             // 
@@ -335,6 +339,7 @@
             this.txtNomeAutor.Name = "txtNomeAutor";
             this.txtNomeAutor.Size = new System.Drawing.Size(648, 26);
             this.txtNomeAutor.TabIndex = 3;
+            this.txtNomeAutor.TextChanged += new System.EventHandler(this.txtNomeAutor_TextChanged);
             // 
             // btnConsultar
             // 

@@ -212,5 +212,65 @@ namespace ConsultaEmprestimo
                 dtpDataReserva.Enabled = false;
             }
         }
+
+        private void txtNomeLocal_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtNomeLocal.Text))
+            {
+                btnLimpar.Enabled = false;
+            }
+            else
+            {
+                btnLimpar.Enabled = true;
+            }
+        }
+
+        private void txtNomeSecao_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtNomeSecao.Text))
+            {
+                btnLimpar.Enabled = false;
+            }
+            else
+            {
+                btnLimpar.Enabled = true;
+            }
+        }
+
+        private void txtNomeAutor_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtNomeAutor.Text))
+            {
+                btnLimpar.Enabled = false;
+            }
+            else
+            {
+                btnLimpar.Enabled = true;
+            }
+        }
+
+        private void cbxTipoItem_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(cbxTipoItem.Text))
+            {
+                btnLimpar.Enabled = false;
+            }
+            else
+            {
+                btnLimpar.Enabled = true;
+            }
+        }
+
+        private void cbxSituacao_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(cbxSituacao.Text))
+            {
+                btnLimpar.Enabled = false;
+            }
+            else
+            {
+                btnLimpar.Enabled = true;
+            }
+        }
     }
 }
