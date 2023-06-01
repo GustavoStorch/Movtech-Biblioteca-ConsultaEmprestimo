@@ -22,11 +22,7 @@ namespace ConsultaEmprestimo
 
         private void FormConsultaEmprestimo_Load(object sender, EventArgs e)
         {
-            btnLimpar.Enabled = false;
-            //dtpDataReserva.CustomFormat = " ";
-            //dtpDataReserva.Format = DateTimePickerFormat.Custom;
-            //dtpDataDevolucao.CustomFormat = " ";
-            //dtpDataDevolucao.Format = DateTimePickerFormat.Custom;
+
         }
 
         private void btnBuscarItem_Click(object sender, EventArgs e)
@@ -130,7 +126,6 @@ namespace ConsultaEmprestimo
             txtNomeLeitor.Text = String.Empty;
             txtNomeSecao.Text = String.Empty;
             cbxTipoItem.SelectedIndex = -1;
-            dtpDataReserva.Text = String.Empty;
             dtpDataDevolucao.Text = String.Empty;
             cbxSituacao.SelectedIndex = -1;
             dtgDadosEmprestimo.Rows.Clear();
@@ -170,6 +165,10 @@ namespace ConsultaEmprestimo
                     row.Cells[colSituacao.Index].Value = emprestimo.StatusItem;
                     row.Cells[colDataReserva.Index].Value = emprestimo.DataReserva.Substring(0, 10);
                     row.Cells[colDataRetorno.Index].Value = emprestimo.DataRetorno.Substring(0, 10);
+                    row.Cells[colNomeLeitor.Index].Value = emprestimo.NomeLeitor;
+                    row.Cells[colNomeLocal.Index].Value = emprestimo.NomeLocal;
+                    row.Cells[colNomeSecao.Index].Value = emprestimo.NomeSecao;
+                    row.Cells[colTipoItem.Index].Value = emprestimo.TipoItem;
                 }
             }
         }
@@ -178,7 +177,6 @@ namespace ConsultaEmprestimo
         {
             if (string.IsNullOrEmpty(txtNomeItem.Text))
             {
-                btnLimpar.Enabled = false;
                 txtNomeAutor.ReadOnly = false;
                 txtNomeLocal.ReadOnly = false;
                 txtNomeSecao.ReadOnly = false;
@@ -191,7 +189,6 @@ namespace ConsultaEmprestimo
             }
             else
             {
-                btnLimpar.Enabled = true;
                 txtNomeAutor.ReadOnly = true;
                 txtNomeLocal.ReadOnly = true;
                 txtNomeSecao.ReadOnly = true;
@@ -208,75 +205,29 @@ namespace ConsultaEmprestimo
         {
             if (string.IsNullOrEmpty(txtNomeLeitor.Text))
             {
-                btnLimpar.Enabled = false;
                 dtpDataDevolucao.Enabled = true;
                 dtpDataReserva.Enabled = true;
             }
             else
             {
-                btnLimpar.Enabled = true;
                 dtpDataDevolucao.Enabled = false;
                 dtpDataReserva.Enabled = false;
             }
         }
 
-        private void txtNomeLocal_TextChanged(object sender, EventArgs e)
+        private void dtgDadosEmprestimo_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (string.IsNullOrEmpty(txtNomeLocal.Text))
+            if (e.RowIndex > -1 && e.ColumnIndex > -1)
             {
-                btnLimpar.Enabled = false;
-            }
-            else
-            {
-                btnLimpar.Enabled = true;
-            }
-        }
-
-        private void txtNomeSecao_TextChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtNomeSecao.Text))
-            {
-                btnLimpar.Enabled = false;
-            }
-            else
-            {
-                btnLimpar.Enabled = true;
-            }
-        }
-
-        private void txtNomeAutor_TextChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtNomeAutor.Text))
-            {
-                btnLimpar.Enabled = false;
-            }
-            else
-            {
-                btnLimpar.Enabled = true;
-            }
-        }
-
-        private void cbxTipoItem_TextChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(cbxTipoItem.Text))
-            {
-                btnLimpar.Enabled = false;
-            }
-            else
-            {
-                btnLimpar.Enabled = true;
-            }
-        }
-
-        private void cbxSituacao_TextChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(cbxSituacao.Text))
-            {
-                btnLimpar.Enabled = false;
-            }
-            else
-            {
-                btnLimpar.Enabled = true;
+                txtNomeItem.Text = dtgDadosEmprestimo.Rows[e.RowIndex].Cells[colNomeItem.Index].Value + "";
+                txtNomeAutor.Text = dtgDadosEmprestimo.Rows[e.RowIndex].Cells[colNomeAutor.Index].Value + "";
+                txtNomeLocal.Text = dtgDadosEmprestimo.Rows[e.RowIndex].Cells[colNomeLocal.Index].Value + "";
+                txtNomeLeitor.Text = dtgDadosEmprestimo.Rows[e.RowIndex].Cells[colNomeLeitor.Index].Value + "";
+                txtNomeSecao.Text = dtgDadosEmprestimo.Rows[e.RowIndex].Cells[colNomeSecao.Index].Value + "";
+                cbxTipoItem.Text = dtgDadosEmprestimo.Rows[e.RowIndex].Cells[colTipoItem.Index].Value + "";
+                dtpDataReserva.Text = dtgDadosEmprestimo.Rows[e.RowIndex].Cells[colDataReserva.Index].Value + "";
+                dtpDataDevolucao.Text = dtgDadosEmprestimo.Rows[e.RowIndex].Cells[colDataRetorno.Index].Value + "";
+                cbxSituacao.Text = dtgDadosEmprestimo.Rows[e.RowIndex].Cells[colSituacao.Index].Value + "";
             }
         }
     }

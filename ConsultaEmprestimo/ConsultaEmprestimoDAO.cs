@@ -25,7 +25,7 @@ namespace ConsultaEmprestimo
             using (SqlCommand command = Connection.CreateCommand())
             {
                 StringBuilder sql = new StringBuilder();
-                sql.AppendLine("SELECT DISTINCT i.nome, i.nomeAutor, i.nomeEditora, i.statusItem, r.dataReserva, r.prazoReserva");                
+                sql.AppendLine("SELECT DISTINCT i.nome, i.nomeAutor, i.nomeEditora, i.statusItem, i.secao, i.tipoItem, i.nomeLocal, r.nomeLeitor, r.dataReserva, r.prazoReserva");                
                 sql.AppendLine("FROM mvtBibReserva r INNER JOIN mvtBibItemAcervo i ON r.codItem = i.codItem");
                 sql.AppendLine("WHERE 1 = 1");
                 if (!string.IsNullOrEmpty(consulta.NomeItem))
@@ -63,12 +63,12 @@ namespace ConsultaEmprestimo
                     sql.AppendLine($"AND i.tipoItem LIKE '%' + @tipoItem + '%'");
                     command.Parameters.AddWithValue("@tipoItem", consulta.TipoItem);
                 }
-                /*if (!string.IsNullOrEmpty(consulta.DataReserva) && !string.IsNullOrEmpty(consulta.DataRetorno))
+                if (!string.IsNullOrEmpty(consulta.DataReserva) && !string.IsNullOrEmpty(consulta.DataRetorno))
                 {
                     sql.AppendLine($"AND r.prazoReserva >= @DataInicio AND r.prazoReserva <= @DataFim");
                     command.Parameters.AddWithValue("@DataInicio", consulta.DataReserva);
                     command.Parameters.AddWithValue("@DataFim", consulta.DataRetorno);
-                }*/
+                }
 
                 command.CommandText = sql.ToString();
 
@@ -110,6 +110,22 @@ namespace ConsultaEmprestimo
             if (DBNull.Value != dr["prazoReserva"])
             {
                 model.DataRetorno = dr["prazoReserva"].ToString();
+            }
+            if (DBNull.Value != dr["nomeLeitor"])
+            {
+                model.NomeLeitor = dr["nomeLeitor"].ToString();
+            }
+            if (DBNull.Value != dr["nomeLocal"])
+            {
+                model.NomeLocal = dr["nomeLocal"].ToString();
+            }
+            if (DBNull.Value != dr["secao"])
+            {
+                model.NomeSecao = dr["secao"].ToString();
+            }
+            if (DBNull.Value != dr["tipoItem"])
+            {
+                model.TipoItem = dr["tipoItem"].ToString();
             }
 
             return model;

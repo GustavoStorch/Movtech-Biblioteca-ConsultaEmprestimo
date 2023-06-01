@@ -61,6 +61,10 @@
             this.colSituacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDataReserva = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDataRetorno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNomeLocal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNomeLeitor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNomeSecao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTipoItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.gpxDadosConsultaEmprestimo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDadosEmprestimo)).BeginInit();
@@ -248,6 +252,7 @@
             this.dtpDataReserva.Name = "dtpDataReserva";
             this.dtpDataReserva.Size = new System.Drawing.Size(313, 26);
             this.dtpDataReserva.TabIndex = 12;
+            this.dtpDataReserva.Value = new System.DateTime(2023, 5, 20, 9, 0, 0, 0);
             // 
             // lblNomeSecao
             // 
@@ -367,7 +372,11 @@
             this.colNomeEditora,
             this.colSituacao,
             this.colDataReserva,
-            this.colDataRetorno});
+            this.colDataRetorno,
+            this.colNomeLocal,
+            this.colNomeLeitor,
+            this.colNomeSecao,
+            this.colTipoItem});
             this.dtgDadosEmprestimo.Location = new System.Drawing.Point(14, 255);
             this.dtgDadosEmprestimo.Name = "dtgDadosEmprestimo";
             this.dtgDadosEmprestimo.ReadOnly = true;
@@ -376,6 +385,7 @@
             this.dtgDadosEmprestimo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgDadosEmprestimo.Size = new System.Drawing.Size(1188, 402);
             this.dtgDadosEmprestimo.TabIndex = 17;
+            this.dtgDadosEmprestimo.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgDadosEmprestimo_CellDoubleClick);
             // 
             // colNomeItem
             // 
@@ -418,6 +428,38 @@
             this.colDataRetorno.MinimumWidth = 8;
             this.colDataRetorno.Name = "colDataRetorno";
             this.colDataRetorno.ReadOnly = true;
+            // 
+            // colNomeLocal
+            // 
+            this.colNomeLocal.HeaderText = "Local";
+            this.colNomeLocal.MinimumWidth = 8;
+            this.colNomeLocal.Name = "colNomeLocal";
+            this.colNomeLocal.ReadOnly = true;
+            this.colNomeLocal.Visible = false;
+            // 
+            // colNomeLeitor
+            // 
+            this.colNomeLeitor.HeaderText = "Leitor";
+            this.colNomeLeitor.MinimumWidth = 8;
+            this.colNomeLeitor.Name = "colNomeLeitor";
+            this.colNomeLeitor.ReadOnly = true;
+            this.colNomeLeitor.Visible = false;
+            // 
+            // colNomeSecao
+            // 
+            this.colNomeSecao.HeaderText = "Seção";
+            this.colNomeSecao.MinimumWidth = 8;
+            this.colNomeSecao.Name = "colNomeSecao";
+            this.colNomeSecao.ReadOnly = true;
+            this.colNomeSecao.Visible = false;
+            // 
+            // colTipoItem
+            // 
+            this.colTipoItem.HeaderText = "Tipo Item";
+            this.colTipoItem.MinimumWidth = 8;
+            this.colTipoItem.Name = "colTipoItem";
+            this.colTipoItem.ReadOnly = true;
+            this.colTipoItem.Visible = false;
             // 
             // btnLimpar
             // 
@@ -480,12 +522,16 @@
         private System.Windows.Forms.Button btnConsultar;
         public System.Windows.Forms.DataGridView dtgDadosEmprestimo;
         public System.Windows.Forms.Button btnLimpar;
-        public System.Windows.Forms.DataGridViewTextBoxColumn colNomeItem;
-        public System.Windows.Forms.DataGridViewTextBoxColumn colNomeAutor;
-        public System.Windows.Forms.DataGridViewTextBoxColumn colNomeEditora;
-        public System.Windows.Forms.DataGridViewTextBoxColumn colSituacao;
-        public System.Windows.Forms.DataGridViewTextBoxColumn colDataReserva;
-        public System.Windows.Forms.DataGridViewTextBoxColumn colDataRetorno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNomeItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNomeAutor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNomeEditora;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSituacao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDataReserva;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDataRetorno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNomeLocal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNomeLeitor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNomeSecao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTipoItem;
     }
 }
 
