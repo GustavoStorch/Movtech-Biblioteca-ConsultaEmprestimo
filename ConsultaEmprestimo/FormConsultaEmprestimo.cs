@@ -184,8 +184,8 @@ namespace ConsultaEmprestimo
                 btnBuscarAutor.Enabled = true;
                 btnBuscarLocal.Enabled = true;
                 btnBuscarSecao.Enabled = true;
-                dtpDataDevolucao.Enabled = true;
-                dtpDataReserva.Enabled = true;
+                //dtpDataDevolucao.Enabled = true;
+                //dtpDataReserva.Enabled = true;
             }
             else
             {
@@ -196,8 +196,8 @@ namespace ConsultaEmprestimo
                 btnBuscarAutor.Enabled = false;
                 btnBuscarLocal.Enabled = false;
                 btnBuscarSecao.Enabled = false;
-                dtpDataDevolucao.Enabled = false;
-                dtpDataReserva.Enabled = false;
+                //dtpDataDevolucao.Enabled = false;
+                //dtpDataReserva.Enabled = false;
             }
         }
 

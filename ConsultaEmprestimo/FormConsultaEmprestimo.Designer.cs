@@ -55,6 +55,7 @@
             this.txtNomeAutor = new System.Windows.Forms.TextBox();
             this.btnConsultar = new System.Windows.Forms.Button();
             this.dtgDadosEmprestimo = new System.Windows.Forms.DataGridView();
+            this.btnLimpar = new System.Windows.Forms.Button();
             this.colNomeItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNomeAutor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNomeEditora = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,7 +66,6 @@
             this.colNomeLeitor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNomeSecao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTipoItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnLimpar = new System.Windows.Forms.Button();
             this.gpxDadosConsultaEmprestimo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDadosEmprestimo)).BeginInit();
             this.SuspendLayout();
@@ -185,7 +185,6 @@
             this.cbxSituacao.Name = "cbxSituacao";
             this.cbxSituacao.Size = new System.Drawing.Size(174, 28);
             this.cbxSituacao.TabIndex = 14;
-            this.cbxSituacao.TextChanged += new System.EventHandler(this.cbxSituacao_TextChanged);
             // 
             // lblNomeItem
             // 
@@ -244,7 +243,6 @@
             this.txtNomeLocal.Name = "txtNomeLocal";
             this.txtNomeLocal.Size = new System.Drawing.Size(220, 26);
             this.txtNomeLocal.TabIndex = 5;
-            this.txtNomeLocal.TextChanged += new System.EventHandler(this.txtNomeLocal_TextChanged);
             // 
             // dtpDataReserva
             // 
@@ -278,7 +276,6 @@
             this.txtNomeSecao.Name = "txtNomeSecao";
             this.txtNomeSecao.Size = new System.Drawing.Size(220, 26);
             this.txtNomeSecao.TabIndex = 9;
-            this.txtNomeSecao.TextChanged += new System.EventHandler(this.txtNomeSecao_TextChanged);
             // 
             // cbxTipoItem
             // 
@@ -297,7 +294,6 @@
             this.cbxTipoItem.Name = "cbxTipoItem";
             this.cbxTipoItem.Size = new System.Drawing.Size(710, 28);
             this.cbxTipoItem.TabIndex = 11;
-            this.cbxTipoItem.TextChanged += new System.EventHandler(this.cbxTipoItem_TextChanged);
             // 
             // lblNomeLeitor
             // 
@@ -344,7 +340,6 @@
             this.txtNomeAutor.Name = "txtNomeAutor";
             this.txtNomeAutor.Size = new System.Drawing.Size(648, 26);
             this.txtNomeAutor.TabIndex = 3;
-            this.txtNomeAutor.TextChanged += new System.EventHandler(this.txtNomeAutor_TextChanged);
             // 
             // btnConsultar
             // 
@@ -387,6 +382,17 @@
             this.dtgDadosEmprestimo.TabIndex = 17;
             this.dtgDadosEmprestimo.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgDadosEmprestimo_CellDoubleClick);
             // 
+            // btnLimpar
+            // 
+            this.btnLimpar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLimpar.Location = new System.Drawing.Point(974, 215);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(110, 32);
+            this.btnLimpar.TabIndex = 15;
+            this.btnLimpar.Text = "Limpar";
+            this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            // 
             // colNomeItem
             // 
             this.colNomeItem.HeaderText = "Item";
@@ -417,6 +423,7 @@
             // 
             // colDataReserva
             // 
+            this.colDataReserva.FillWeight = 75F;
             this.colDataReserva.HeaderText = "Data Reserva";
             this.colDataReserva.MinimumWidth = 8;
             this.colDataReserva.Name = "colDataReserva";
@@ -424,6 +431,7 @@
             // 
             // colDataRetorno
             // 
+            this.colDataRetorno.FillWeight = 75F;
             this.colDataRetorno.HeaderText = "Data Retorno";
             this.colDataRetorno.MinimumWidth = 8;
             this.colDataRetorno.Name = "colDataRetorno";
@@ -460,17 +468,6 @@
             this.colTipoItem.Name = "colTipoItem";
             this.colTipoItem.ReadOnly = true;
             this.colTipoItem.Visible = false;
-            // 
-            // btnLimpar
-            // 
-            this.btnLimpar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLimpar.Location = new System.Drawing.Point(974, 215);
-            this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(110, 32);
-            this.btnLimpar.TabIndex = 15;
-            this.btnLimpar.Text = "Limpar";
-            this.btnLimpar.UseVisualStyleBackColor = true;
-            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // FormConsultaEmprestimo
             // 
