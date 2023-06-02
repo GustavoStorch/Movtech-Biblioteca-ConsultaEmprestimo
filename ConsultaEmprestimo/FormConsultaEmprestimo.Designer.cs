@@ -55,7 +55,6 @@
             this.txtNomeAutor = new System.Windows.Forms.TextBox();
             this.btnConsultar = new System.Windows.Forms.Button();
             this.dtgDadosEmprestimo = new System.Windows.Forms.DataGridView();
-            this.btnLimpar = new System.Windows.Forms.Button();
             this.colNomeItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNomeAutor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNomeEditora = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,6 +65,7 @@
             this.colNomeLeitor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNomeSecao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTipoItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnLimpar = new System.Windows.Forms.Button();
             this.gpxDadosConsultaEmprestimo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDadosEmprestimo)).BeginInit();
             this.SuspendLayout();
@@ -78,12 +78,12 @@
             this.gpxDadosConsultaEmprestimo.Controls.Add(this.btnBuscarAutor);
             this.gpxDadosConsultaEmprestimo.Controls.Add(this.btnBuscarSecao);
             this.gpxDadosConsultaEmprestimo.Controls.Add(this.btnBuscarLocal);
+            this.gpxDadosConsultaEmprestimo.Controls.Add(this.dtpDataDevolucao);
             this.gpxDadosConsultaEmprestimo.Controls.Add(this.btnBuscarItem);
             this.gpxDadosConsultaEmprestimo.Controls.Add(this.cbxSituacao);
             this.gpxDadosConsultaEmprestimo.Controls.Add(this.lblNomeItem);
             this.gpxDadosConsultaEmprestimo.Controls.Add(this.lblSituacao);
             this.gpxDadosConsultaEmprestimo.Controls.Add(this.txtNomeItem);
-            this.gpxDadosConsultaEmprestimo.Controls.Add(this.dtpDataDevolucao);
             this.gpxDadosConsultaEmprestimo.Controls.Add(this.lblDataDevolucao);
             this.gpxDadosConsultaEmprestimo.Controls.Add(this.lblNomeLocal);
             this.gpxDadosConsultaEmprestimo.Controls.Add(this.txtNomeLocal);
@@ -99,7 +99,7 @@
             this.gpxDadosConsultaEmprestimo.Controls.Add(this.txtNomeAutor);
             this.gpxDadosConsultaEmprestimo.Location = new System.Drawing.Point(12, 12);
             this.gpxDadosConsultaEmprestimo.Name = "gpxDadosConsultaEmprestimo";
-            this.gpxDadosConsultaEmprestimo.Size = new System.Drawing.Size(1188, 198);
+            this.gpxDadosConsultaEmprestimo.Size = new System.Drawing.Size(907, 198);
             this.gpxDadosConsultaEmprestimo.TabIndex = 0;
             this.gpxDadosConsultaEmprestimo.TabStop = false;
             this.gpxDadosConsultaEmprestimo.Text = "Dados empréstimo";
@@ -111,7 +111,7 @@
             this.btnBuscarLeitor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscarLeitor.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.btnBuscarLeitor.Image = global::ConsultaEmprestimo.Properties.Resources.lupa__1_;
-            this.btnBuscarLeitor.Location = new System.Drawing.Point(1120, 72);
+            this.btnBuscarLeitor.Location = new System.Drawing.Point(839, 72);
             this.btnBuscarLeitor.Name = "btnBuscarLeitor";
             this.btnBuscarLeitor.Size = new System.Drawing.Size(58, 26);
             this.btnBuscarLeitor.TabIndex = 8;
@@ -125,7 +125,7 @@
             this.btnBuscarAutor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscarAutor.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.btnBuscarAutor.Image = global::ConsultaEmprestimo.Properties.Resources.lupa__1_;
-            this.btnBuscarAutor.Location = new System.Drawing.Point(1120, 35);
+            this.btnBuscarAutor.Location = new System.Drawing.Point(839, 34);
             this.btnBuscarAutor.Name = "btnBuscarAutor";
             this.btnBuscarAutor.Size = new System.Drawing.Size(58, 23);
             this.btnBuscarAutor.TabIndex = 4;
@@ -181,9 +181,9 @@
             "Reservado",
             "Emprestado",
             "Disponível"});
-            this.cbxSituacao.Location = new System.Drawing.Point(1006, 155);
+            this.cbxSituacao.Location = new System.Drawing.Point(659, 155);
             this.cbxSituacao.Name = "cbxSituacao";
-            this.cbxSituacao.Size = new System.Drawing.Size(174, 28);
+            this.cbxSituacao.Size = new System.Drawing.Size(238, 28);
             this.cbxSituacao.TabIndex = 14;
             // 
             // lblNomeItem
@@ -198,7 +198,7 @@
             // lblSituacao
             // 
             this.lblSituacao.AutoSize = true;
-            this.lblSituacao.Location = new System.Drawing.Point(924, 160);
+            this.lblSituacao.Location = new System.Drawing.Point(577, 158);
             this.lblSituacao.Name = "lblSituacao";
             this.lblSituacao.Size = new System.Drawing.Size(76, 20);
             this.lblSituacao.TabIndex = 8;
@@ -207,6 +207,7 @@
             // txtNomeItem
             // 
             this.txtNomeItem.Location = new System.Drawing.Point(68, 32);
+            this.txtNomeItem.MaxLength = 200;
             this.txtNomeItem.Name = "txtNomeItem";
             this.txtNomeItem.Size = new System.Drawing.Size(224, 26);
             this.txtNomeItem.TabIndex = 1;
@@ -214,15 +215,16 @@
             // 
             // dtpDataDevolucao
             // 
-            this.dtpDataDevolucao.Location = new System.Drawing.Point(602, 155);
+            this.dtpDataDevolucao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDataDevolucao.Location = new System.Drawing.Point(429, 155);
             this.dtpDataDevolucao.Name = "dtpDataDevolucao";
-            this.dtpDataDevolucao.Size = new System.Drawing.Size(316, 26);
+            this.dtpDataDevolucao.Size = new System.Drawing.Size(142, 26);
             this.dtpDataDevolucao.TabIndex = 13;
             // 
             // lblDataDevolucao
             // 
             this.lblDataDevolucao.AutoSize = true;
-            this.lblDataDevolucao.Location = new System.Drawing.Point(470, 160);
+            this.lblDataDevolucao.Location = new System.Drawing.Point(296, 160);
             this.lblDataDevolucao.Name = "lblDataDevolucao";
             this.lblDataDevolucao.Size = new System.Drawing.Size(127, 20);
             this.lblDataDevolucao.TabIndex = 7;
@@ -240,15 +242,17 @@
             // txtNomeLocal
             // 
             this.txtNomeLocal.Location = new System.Drawing.Point(70, 72);
+            this.txtNomeLocal.MaxLength = 50;
             this.txtNomeLocal.Name = "txtNomeLocal";
             this.txtNomeLocal.Size = new System.Drawing.Size(220, 26);
             this.txtNomeLocal.TabIndex = 5;
             // 
             // dtpDataReserva
             // 
+            this.dtpDataReserva.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDataReserva.Location = new System.Drawing.Point(150, 155);
             this.dtpDataReserva.Name = "dtpDataReserva";
-            this.dtpDataReserva.Size = new System.Drawing.Size(313, 26);
+            this.dtpDataReserva.Size = new System.Drawing.Size(140, 26);
             this.dtpDataReserva.TabIndex = 12;
             this.dtpDataReserva.Value = new System.DateTime(2023, 5, 20, 9, 0, 0, 0);
             // 
@@ -292,7 +296,7 @@
             "Artigo"});
             this.cbxTipoItem.Location = new System.Drawing.Point(468, 112);
             this.cbxTipoItem.Name = "cbxTipoItem";
-            this.cbxTipoItem.Size = new System.Drawing.Size(710, 28);
+            this.cbxTipoItem.Size = new System.Drawing.Size(429, 28);
             this.cbxTipoItem.TabIndex = 11;
             // 
             // lblNomeLeitor
@@ -319,7 +323,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNomeLeitor.Location = new System.Drawing.Point(468, 72);
             this.txtNomeLeitor.Name = "txtNomeLeitor";
-            this.txtNomeLeitor.Size = new System.Drawing.Size(648, 26);
+            this.txtNomeLeitor.Size = new System.Drawing.Size(365, 26);
             this.txtNomeLeitor.TabIndex = 7;
             this.txtNomeLeitor.TextChanged += new System.EventHandler(this.txtNomeLeitor_TextChanged);
             // 
@@ -338,13 +342,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNomeAutor.Location = new System.Drawing.Point(468, 32);
             this.txtNomeAutor.Name = "txtNomeAutor";
-            this.txtNomeAutor.Size = new System.Drawing.Size(648, 26);
+            this.txtNomeAutor.Size = new System.Drawing.Size(365, 26);
             this.txtNomeAutor.TabIndex = 3;
             // 
             // btnConsultar
             // 
             this.btnConsultar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnConsultar.Location = new System.Drawing.Point(1090, 215);
+            this.btnConsultar.Location = new System.Drawing.Point(809, 216);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(110, 32);
             this.btnConsultar.TabIndex = 16;
@@ -378,20 +382,9 @@
             this.dtgDadosEmprestimo.RowHeadersWidth = 62;
             this.dtgDadosEmprestimo.RowTemplate.Height = 28;
             this.dtgDadosEmprestimo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgDadosEmprestimo.Size = new System.Drawing.Size(1188, 402);
+            this.dtgDadosEmprestimo.Size = new System.Drawing.Size(905, 402);
             this.dtgDadosEmprestimo.TabIndex = 17;
             this.dtgDadosEmprestimo.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgDadosEmprestimo_CellDoubleClick);
-            // 
-            // btnLimpar
-            // 
-            this.btnLimpar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLimpar.Location = new System.Drawing.Point(974, 215);
-            this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(110, 32);
-            this.btnLimpar.TabIndex = 15;
-            this.btnLimpar.Text = "Limpar";
-            this.btnLimpar.UseVisualStyleBackColor = true;
-            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // colNomeItem
             // 
@@ -469,11 +462,22 @@
             this.colTipoItem.ReadOnly = true;
             this.colTipoItem.Visible = false;
             // 
+            // btnLimpar
+            // 
+            this.btnLimpar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLimpar.Location = new System.Drawing.Point(693, 216);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(110, 32);
+            this.btnLimpar.TabIndex = 15;
+            this.btnLimpar.Text = "Limpar";
+            this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            // 
             // FormConsultaEmprestimo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1214, 668);
+            this.ClientSize = new System.Drawing.Size(931, 668);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.dtgDadosEmprestimo);
             this.Controls.Add(this.btnConsultar);
