@@ -25,7 +25,7 @@ namespace ConsultaEmprestimo
             using (SqlCommand command = Connection.CreateCommand())
             {
                 StringBuilder sql = new StringBuilder();
-                sql.AppendLine("SELECT DISTINCT i.nome, i.nomeAutor, i.nomeEditora, i.statusItem, i.secao, i.tipoItem, i.nomeLocal, r.nomeLeitor, r.dataReserva, r.prazoReserva");                
+                sql.AppendLine("SELECT DISTINCT i.nome, i.nomeAutor, i.nomeEditora, r.statusItem, i.secao, i.tipoItem, i.nomeLocal, r.nomeLeitor, r.dataReserva, r.prazoReserva");                
                 sql.AppendLine("FROM mvtBibReserva r INNER JOIN mvtBibItemAcervo i ON r.codItem = i.codItem");
                 sql.AppendLine("WHERE 1 = 1");
                 if (!string.IsNullOrEmpty(consulta.NomeItem))
@@ -40,7 +40,7 @@ namespace ConsultaEmprestimo
                 }
                 if (!string.IsNullOrEmpty(consulta.StatusItem))
                 {
-                    sql.AppendLine($"AND i.statusItem LIKE '%' + @statusItem + '%'");
+                    sql.AppendLine($"AND r.statusItem LIKE '%' + @statusItem + '%'");
                     command.Parameters.AddWithValue("@statusItem", consulta.StatusItem);
                 }
                 if (!string.IsNullOrEmpty(consulta.NomeAutor))

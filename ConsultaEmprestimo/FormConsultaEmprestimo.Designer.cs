@@ -34,12 +34,12 @@
             this.btnBuscarAutor = new System.Windows.Forms.Button();
             this.btnBuscarSecao = new System.Windows.Forms.Button();
             this.btnBuscarLocal = new System.Windows.Forms.Button();
+            this.dtpDataDevolucao = new System.Windows.Forms.DateTimePicker();
             this.btnBuscarItem = new System.Windows.Forms.Button();
             this.cbxSituacao = new System.Windows.Forms.ComboBox();
             this.lblNomeItem = new System.Windows.Forms.Label();
             this.lblSituacao = new System.Windows.Forms.Label();
             this.txtNomeItem = new System.Windows.Forms.TextBox();
-            this.dtpDataDevolucao = new System.Windows.Forms.DateTimePicker();
             this.lblDataDevolucao = new System.Windows.Forms.Label();
             this.lblNomeLocal = new System.Windows.Forms.Label();
             this.txtNomeLocal = new System.Windows.Forms.TextBox();
@@ -158,6 +158,14 @@
             this.btnBuscarLocal.UseVisualStyleBackColor = true;
             this.btnBuscarLocal.Click += new System.EventHandler(this.btnBuscarLocal_Click);
             // 
+            // dtpDataDevolucao
+            // 
+            this.dtpDataDevolucao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDataDevolucao.Location = new System.Drawing.Point(429, 155);
+            this.dtpDataDevolucao.Name = "dtpDataDevolucao";
+            this.dtpDataDevolucao.Size = new System.Drawing.Size(142, 26);
+            this.dtpDataDevolucao.TabIndex = 13;
+            // 
             // btnBuscarItem
             // 
             this.btnBuscarItem.FlatAppearance.BorderSize = 0;
@@ -178,9 +186,8 @@
             this.cbxSituacao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxSituacao.FormattingEnabled = true;
             this.cbxSituacao.Items.AddRange(new object[] {
-            "Reservado",
             "Emprestado",
-            "Disponível"});
+            "Devolvido"});
             this.cbxSituacao.Location = new System.Drawing.Point(659, 155);
             this.cbxSituacao.Name = "cbxSituacao";
             this.cbxSituacao.Size = new System.Drawing.Size(238, 28);
@@ -212,14 +219,6 @@
             this.txtNomeItem.Size = new System.Drawing.Size(224, 26);
             this.txtNomeItem.TabIndex = 1;
             this.txtNomeItem.TextChanged += new System.EventHandler(this.txtNomeItem_TextChanged);
-            // 
-            // dtpDataDevolucao
-            // 
-            this.dtpDataDevolucao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataDevolucao.Location = new System.Drawing.Point(429, 155);
-            this.dtpDataDevolucao.Name = "dtpDataDevolucao";
-            this.dtpDataDevolucao.Size = new System.Drawing.Size(142, 26);
-            this.dtpDataDevolucao.TabIndex = 13;
             // 
             // lblDataDevolucao
             // 
